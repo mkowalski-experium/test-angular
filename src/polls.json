@@ -1,0 +1,25 @@
+{
+  "question": "What is your favorite programming language?",
+  "options": [
+    {
+      "id": 1,
+      "text": "JavaScript",
+      "votes": 1
+    },
+    {
+      "id": 2,
+      "text": "Python",
+      "votes": 4
+    },
+    {
+      "id": 3,
+      "text": "Java",
+      "votes": 1
+    },
+    {
+      "id": 4,
+      "text": "C#",
+      "votes": 5
+    }
+  ]
+}

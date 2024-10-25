@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <title>AngularJS Poll with Express</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="app.js"></script>
+  <script src="controllers/PollController.js"></script>
+</head>
+<body>
+  <div ng-controller="PollController">
+    <h1>{{ poll.question }}</h1>
+    <ul>
+      <li ng-repeat="option in poll.options">
+        <label>
+          <input type="radio" name="poll" ng-model="$parent.selectedOption" ng-value="option.id" ng-disabled="hasVoted || !consentGiven">
+          {{ option.text }} (Votes: {{ option.votes }})
+        </label>
+      </li>
+    </ul>
+
+    <!-- Consent checkbox -->
+    <label>
+      <input type="checkbox" ng-model="consentGiven"> I consent to the storage of my vote to ensure I can only vote once.
+    </label>
+
+    <button ng-click="submitVote()" ng-disabled="hasVoted || !consentGiven">Submit Vote</button>
+    <button ng-click="withdrawConsent()">Withdraw Consent</button>
+    <p ng-if="message">{{ message }}</p>
+
+    <!-- Privacy Policy Notice -->
+    <div ng-if="!hasVoted && consentGiven">
+      <p><small>We store your voting status in your browser’s local storage to prevent multiple votes. You can withdraw consent at any time by clicking "Withdraw Consent".</small></p>
+    </div>
+  </div>
+</body>
+</html>
